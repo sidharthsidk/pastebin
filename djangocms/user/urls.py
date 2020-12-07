@@ -4,6 +4,6 @@ from .views import *
 urlpatterns = [
     path('',home, name='home'),
     path('<str:url>',viewpost,name='viewpost'),
-     path('search/', search, name='searchpost'),
+    path('search/', search, name='searchpost'),
  
 ] 

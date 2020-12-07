@@ -57,7 +57,7 @@ class Post(models.Model):
     )
 
     body = models.TextField(
-        verbose_name="Body",
+        verbose_name="BodY",
         help_text="Post content",
         blank=False,
         null=False
