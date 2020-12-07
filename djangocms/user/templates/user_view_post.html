@@ -1,0 +1,25 @@
+{% extends 'user_base.html' %}
+
+{% block meta %}
+<title>Django CMS</title>
+{% endblock meta %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center mt-5 post-title">{{ data.title }}</h1>
+    {% if data.featured_image %}
+    <img id="owo" class="img-fluid m-5" src="{{ data.featured_image.url }}" alt="">
+    {% endif %}
+
+
+    {% autoescape off %}
+    <article>
+        {{ data.body }}
+    </article>
+    {% endautoescape %}
+
+</div>
+
+{% endblock content %}

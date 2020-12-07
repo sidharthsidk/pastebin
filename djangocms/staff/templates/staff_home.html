@@ -1,0 +1,42 @@
+{% extends 'staff_base.html' %}
+
+{% block meta %}
+<title>Django CMS</title>
+{% endblock meta %}
+
+
+{% block content %}
+<h1 class="text-center">Welcome STAFF</h1>
+{% for p in data %}
+<div class="container">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h4 class="mb-0 d-flex">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                        data-target="#collapse{{ p.id }}" aria-expanded="true" aria-controls="collapseOne">
+                        {{ p.title }}
+                    </button>
+                    <div style="float: right;" class="btn-group">
+                        <a class="btn btn-primary fa fa-eye" href="{% url 'viewpost' url=p.slug %}" target="_blank"></a>
+                        <a class="btn btn-success fa fa-edit" href="{% url 'post_edit' id=p.id %}" target="_blank"></a>
+                        <a class="btn btn-danger fa fa-trash" href="{% url 'post_delete' id=p.id %}" onclick="return confirm('do you want to delete thi spost for sure??')"></a>
+
+                    </div>
+                </h4>
+            </div>
+
+            <div id="collapse{{ p.id }}" class="collapse hide" aria-labelledby="headingOne"
+                data-parent="#accordionExample">
+                <div class="card-body">
+                    {% autoescape off %}
+                    {{ p.body }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
